@@ -8,10 +8,17 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="theme-color" content="#05080F">
-<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="icon" href="favicon-48.png" type="image/png" sizes="48x48">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="manifest" href="manifest.webmanifest">
+<meta name="apple-mobile-web-app-title" content="Trackie">
+<meta name="application-name" content="Trackie">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <link rel="preload" href="assets/fonts/archivo-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/fonts/manrope-latin.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="assets/css/site.css?v=mvyc91wx">
+<link rel="stylesheet" href="assets/css/site.css?v=mvyd1vbf">
 <meta property="og:site_name" content="Trackie">
 <meta property="og:type" content="website">
 <meta property="og:image" content="https://trackieofficial.com/assets/img/trackie-hero.jpg">
@@ -20,12 +27,12 @@
   document.documentElement.classList.replace('no-js','js');
   try { if (sessionStorage.getItem('trackie-pt') === '1') document.documentElement.classList.add('pt-incoming'); } catch (e) {}
 </script>
-<script src="assets/js/config.js?v=mvyc91wx" defer></script>
+<script src="assets/js/config.js?v=mvyd1vbf" defer></script>
 <script src="assets/js/gsap.min.js" defer></script>
 <script src="assets/js/ScrollTrigger.min.js" defer></script>
 <script src="assets/js/MotionPathPlugin.min.js" defer></script>
 <script src="assets/js/lenis.min.js" defer></script>
-<script src="assets/js/site.js?v=mvyc91wx" defer></script>
+<script src="assets/js/site.js?v=mvyd1vbf" defer></script>
 
 </head>
 <body class="page-home">
@@ -40,6 +47,7 @@
     <linearGradient id="cs-intro-vert" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff" stop-opacity=".12"/><stop offset=".25" stop-color="#fff" stop-opacity="0"/><stop offset="1" stop-color="#000" stop-opacity=".3"/></linearGradient>
     <radialGradient id="cs-intro-glow" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#3BA4FF" stop-opacity=".95"/><stop offset="1" stop-color="#3BA4FF" stop-opacity="0"/></radialGradient>
     <filter id="cs-intro-blur" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="7"/></filter>
+    <pattern id="cs-intro-weave" width="4" height="4" patternUnits="userSpaceOnUse"><path d="M0 4L4 0" stroke="#fff" stroke-opacity=".05" stroke-width="1"/><path d="M0 0L4 4" stroke="#000" stroke-opacity=".08" stroke-width="1"/></pattern>
     <clipPath id="cs-intro-clip"><rect x="74" y="96" width="252" height="412" rx="44"/></clipPath>
   </defs>
   <ellipse class="case__shadow" cx="200" cy="568" rx="150" ry="15" fill="#000" opacity=".6" filter="url(#cs-intro-blur)"/>
@@ -60,36 +68,35 @@
       <rect class="case__fabric" x="74" y="96" width="252" height="412" fill="var(--cover)"/>
       <rect x="74" y="96" width="252" height="412" fill="url(#cs-intro-vert)"/>
       <rect x="74" y="96" width="252" height="412" fill="url(#cs-intro-shade)"/>
-      <g fill="#000" opacity=".26"><path d="M74 96h62l-62 62z"/><path d="M326 96h-62l62 62z"/><path d="M74 508h62l-62-62z"/><path d="M326 508h-62l62-62z"/></g>
-      <rect x="74" y="488" width="252" height="20" fill="#000" opacity=".32"/>
-      <path d="M74 488H326" stroke="#fff" stroke-opacity=".08" stroke-width="2"/>
-      <path d="M312 110V486" stroke="#000" stroke-opacity=".28" stroke-width="2" stroke-dasharray="3 5"/>
+      <rect x="74" y="96" width="252" height="412" fill="url(#cs-intro-weave)" opacity=".5"/>
+      <g fill="#000" opacity=".2"><path d="M74 96h54l-54 54z"/><path d="M326 96h-54l54 54z"/><path d="M74 508h54l-54-54z"/><path d="M326 508h-54l54-54z"/></g>
+      <g fill="none" stroke="#fff" stroke-opacity=".1" stroke-width="1.2" stroke-dasharray="3 4">
+        <path d="M74 158L136 96M326 158L264 96M74 446L136 508M326 446L264 508"/>
+      </g>
+      <rect x="74" y="490" width="252" height="18" fill="#000" opacity=".3"/>
+      <path d="M74 490H326" stroke="#fff" stroke-opacity=".08" stroke-width="1.5"/>
+      <path d="M314 112V478" stroke="#000" stroke-opacity=".22" stroke-width="1.6"/>
     </g>
+    <rect x="80" y="102" width="240" height="400" rx="38" fill="none" stroke="#fff" stroke-opacity=".09" stroke-width="1.2" stroke-dasharray="4 4"/>
     <rect class="case__outline" x="74" y="96" width="252" height="412" rx="44" fill="none" stroke="#3BA4FF" stroke-width="3" opacity="0"/>
     <g class="case__slot"><rect x="150" y="98" width="100" height="18" rx="9" fill="#05070B"/><rect class="case__slot-glow" x="150" y="98" width="100" height="18" rx="9" fill="none" stroke="#3BA4FF" stroke-width="2.5"/></g>
-    <g class="case__pocket">
-      <rect x="108" y="256" width="176" height="200" rx="16" fill="#000" opacity=".16"/>
-      <rect x="108" y="256" width="176" height="200" rx="16" fill="none" stroke="#000" stroke-opacity=".35" stroke-width="2"/>
-      <rect class="case__pocket-open" x="122" y="270" width="148" height="0" rx="4" fill="#020305"/>
-      <path class="case__zipline" d="M122 272H270" stroke="#000" stroke-opacity=".55" stroke-width="4" stroke-linecap="round"/>
-      <g class="case__zip"><rect x="126" y="266" width="12" height="12" rx="3" fill="#20242C"/><rect x="127" y="276" width="10" height="40" rx="3" fill="#1F72E0"/><rect x="129" y="282" width="2" height="28" rx="1" fill="#fff" opacity=".6"/></g>
+    <g class="case__logo">
+      <image class="case__logo-img case__logo--light" href="assets/img/trackie-logo-light.png" x="216" y="128" width="92" height="74" preserveAspectRatio="xMidYMid meet"/>
+      <image class="case__logo-img case__logo--dark" href="assets/img/trackie-logo-dark.png" x="216" y="128" width="92" height="74" preserveAspectRatio="xMidYMid meet"/>
     </g>
-    <g class="case__tracker">
-      <circle class="case__ring" cx="286" cy="178" r="20" fill="none" stroke="#3BA4FF" stroke-width="2" opacity="0"/>
-      <circle class="case__ring" cx="286" cy="178" r="20" fill="none" stroke="#3BA4FF" stroke-width="2" opacity="0"/>
-      <rect x="262" y="148" width="48" height="60" rx="9" fill="#000" opacity=".3"/>
-      <rect x="262" y="148" width="48" height="60" rx="9" fill="none" stroke="#3BA4FF" stroke-opacity=".55" stroke-width="1.5"/>
-      <circle class="case__tracker-glow" cx="286" cy="178" r="16" fill="url(#cs-intro-glow)"/>
-      <path class="case__tracker-pin" d="M286 166c-5 0-8.6 3.7-8.6 8.4 0 6 8.6 13.4 8.6 13.4s8.6-7.4 8.6-13.4c0-4.7-3.6-8.4-8.6-8.4z" fill="none" stroke="#7CC4FF" stroke-width="2.2"/>
-      <circle cx="286" cy="174.6" r="2.6" fill="#7CC4FF"/>
-      <g class="case__tag" opacity="0"><circle cx="286" cy="178" r="15" fill="#E9EDF2"/><circle cx="286" cy="178" r="10" fill="none" stroke="#C3CAD3" stroke-width="1.5"/></g>
+    <g class="case__sidezip" opacity="0">
+      <path class="case__sidezip-line" d="M314 190V420" stroke="#3BA4FF" stroke-width="3" stroke-linecap="round" fill="none"/>
+      <g class="case__zip"><rect x="308" y="184" width="12" height="12" rx="3" fill="#20242C"/><rect x="309" y="194" width="10" height="34" rx="3" fill="#1F72E0"/></g>
     </g>
-    <g class="case__label" transform="translate(108 138)">
-      <rect width="100" height="34" rx="7" fill="#05070B" opacity=".9"/>
-      <g transform="translate(4 2) scale(.25)"><rect x="34" y="34" width="52" height="66" rx="10" fill="#fff"/><rect x="34" y="34" width="52" height="40" rx="10" fill="#4FA6DC"/><path d="M60 41c-7.2 0-12.4 5.3-12.4 12.1 0 8.6 12.4 19.4 12.4 19.4s12.4-10.8 12.4-19.4C72.4 46.3 67.2 41 60 41z" fill="#fff"/><path d="M24 70c-9 12 20 22 50 12 14-5 26-14 34-24-11 8-24 15-37 18-22 5-43 3-47-6z" fill="#2E8BEA"/></g>
-      <text x="38" y="22" fill="#fff" font-family="Archivo, sans-serif" font-size="12.5" font-weight="800" letter-spacing=".6">TRACKIE</text>
+    <g class="case__tracker" opacity="0">
+      <circle class="case__ring" cx="268" cy="352" r="22" fill="none" stroke="#3BA4FF" stroke-width="2" opacity="0"/>
+      <circle class="case__ring" cx="268" cy="352" r="22" fill="none" stroke="#3BA4FF" stroke-width="2" opacity="0"/>
+      <rect x="240" y="318" width="56" height="68" rx="10" fill="#3BA4FF" fill-opacity=".1" stroke="#3BA4FF" stroke-width="1.6" stroke-dasharray="5 4"/>
+      <circle class="case__tracker-glow" cx="268" cy="352" r="18" fill="url(#cs-intro-glow)"/>
+      <g class="case__tag"><circle cx="268" cy="352" r="15" fill="#E9EDF2"/><circle cx="268" cy="352" r="10" fill="none" stroke="#C3CAD3" stroke-width="1.5"/></g>
+      <path d="M268 334c-4 0-7 3-7 6.8 0 4.9 7 10.9 7 10.9s7-6 7-10.9c0-3.8-3-6.8-7-6.8z" fill="#3BA4FF" transform="translate(0 -24)"/>
     </g>
-    <path class="case__sheen" d="M96 130c-6 90-6 250 0 350" stroke="#fff" stroke-opacity=".09" stroke-width="10" stroke-linecap="round" fill="none"/>
+    <path class="case__sheen" d="M98 136c-6 90-6 240 0 340" stroke="#fff" stroke-opacity=".08" stroke-width="12" stroke-linecap="round" fill="none"/>
   </g>
   <g class="case__orbit">
     <path id="cs-intro-orbit" class="case__orbit-path" d="M30 300C-30 440 120 600 290 520 370 480 410 380 372 250" fill="none" stroke="url(#cs-intro-orbitg)" stroke-width="8" stroke-linecap="round"/>
@@ -134,20 +141,7 @@
 
 <header class="hdr hdr--over" data-header>
   <div class="hdr__inner">
-    <a href="index.html" class="hdr__logo" aria-label="Trackie home"><span class="logo"><svg class="logo__mark" viewBox="0 0 120 120" aria-hidden="true" focusable="false">
-  <defs>
-    <linearGradient id="lg-hdr-body" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#6BB8E8"/><stop offset="1" stop-color="#3E97D6"/></linearGradient>
-    <linearGradient id="lg-hdr-sw" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#1F6FC4"/><stop offset=".55" stop-color="#2E8BEA"/><stop offset="1" stop-color="#ffffff"/></linearGradient>
-    <clipPath id="lg-hdr-clip"><rect x="34" y="34" width="52" height="66" rx="10"/></clipPath>
-  </defs>
-  <path class="logo__handle" d="M47 36V24a9 9 0 0 1 9-9h8a9 9 0 0 1 9 9v12" fill="none" stroke="#4FA6DC" stroke-width="6" stroke-linecap="round"/>
-  <rect class="logo__body" x="34" y="34" width="52" height="66" rx="10" fill="#fff"/>
-  <g clip-path="url(#lg-hdr-clip)"><rect class="logo__fill" x="30" y="30" width="60" height="44" fill="url(#lg-hdr-body)"/></g>
-  <path class="logo__pin" d="M60 41c-7.2 0-12.4 5.3-12.4 12.1 0 8.6 12.4 19.4 12.4 19.4s12.4-10.8 12.4-19.4C72.4 46.3 67.2 41 60 41z" fill="#fff"/>
-  <circle class="logo__dot" cx="60" cy="53" r="4.6" fill="#4FA6DC"/>
-  <path class="logo__swoosh" d="M24 70c-9 12 20 22 50 12 14-5 26-14 34-24-11 8-24 15-37 18-22 5-43 3-47-6z" fill="url(#lg-hdr-sw)"/>
-  <path class="logo__plane" transform="translate(88 20) rotate(45 12 12)" d="M21 16v-2l-8-5V3.5a1.5 1.5 0 0 0-3 0V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5l8 2.5z" fill="#fff"/>
-</svg><span class="logo__text"><span class="logo__word">TRACKIE<sup>®</sup></span></span></span></a>
+    <a href="index.html" class="hdr__logo" aria-label="Trackie home"><span class="logo"><img class="logo__mark logo__mark--img" src="assets/img/trackie-mark.png" alt="" width="152" height="140"><span class="logo__text"><span class="logo__word">TRACKIE<sup>®</sup></span></span></span></a>
     <nav class="hdr__nav" aria-label="Main">
       <ul class="hdr__links">
         <li><a href="product.html" class="hdr__link" data-magnetic><span data-text="Shop">Shop</span></a></li>
@@ -178,20 +172,7 @@
       <li><a href="index.html#tracking" class="mmenu__link"><span class="mmenu__idx">04</span>Tracking</a></li>
       <li><a href="index.html#faq" class="mmenu__link"><span class="mmenu__idx">05</span>FAQ</a></li>
     </ul>
-    <div class="mmenu__foot"><span class="logo"><svg class="logo__mark" viewBox="0 0 120 120" aria-hidden="true" focusable="false">
-  <defs>
-    <linearGradient id="lg-mm-body" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#6BB8E8"/><stop offset="1" stop-color="#3E97D6"/></linearGradient>
-    <linearGradient id="lg-mm-sw" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#1F6FC4"/><stop offset=".55" stop-color="#2E8BEA"/><stop offset="1" stop-color="#ffffff"/></linearGradient>
-    <clipPath id="lg-mm-clip"><rect x="34" y="34" width="52" height="66" rx="10"/></clipPath>
-  </defs>
-  <path class="logo__handle" d="M47 36V24a9 9 0 0 1 9-9h8a9 9 0 0 1 9 9v12" fill="none" stroke="#4FA6DC" stroke-width="6" stroke-linecap="round"/>
-  <rect class="logo__body" x="34" y="34" width="52" height="66" rx="10" fill="#fff"/>
-  <g clip-path="url(#lg-mm-clip)"><rect class="logo__fill" x="30" y="30" width="60" height="44" fill="url(#lg-mm-body)"/></g>
-  <path class="logo__pin" d="M60 41c-7.2 0-12.4 5.3-12.4 12.1 0 8.6 12.4 19.4 12.4 19.4s12.4-10.8 12.4-19.4C72.4 46.3 67.2 41 60 41z" fill="#fff"/>
-  <circle class="logo__dot" cx="60" cy="53" r="4.6" fill="#4FA6DC"/>
-  <path class="logo__swoosh" d="M24 70c-9 12 20 22 50 12 14-5 26-14 34-24-11 8-24 15-37 18-22 5-43 3-47-6z" fill="url(#lg-mm-sw)"/>
-  <path class="logo__plane" transform="translate(88 20) rotate(45 12 12)" d="M21 16v-2l-8-5V3.5a1.5 1.5 0 0 0-3 0V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5l8 2.5z" fill="#fff"/>
-</svg><span class="logo__text"><span class="logo__word">TRACKIE<sup>®</sup></span><span class="logo__tag">Your luggage’s best friend</span></span></span></div>
+    <div class="mmenu__foot"><span class="logo"><img class="logo__mark logo__mark--img" src="assets/img/trackie-mark.png" alt="" width="152" height="140"><span class="logo__text"><span class="logo__word">TRACKIE<sup>®</sup></span><span class="logo__tag">Your luggage’s best friend</span></span></span></div>
   </nav>
 </div>
 
@@ -302,6 +283,7 @@
     <linearGradient id="cs-anat-vert" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff" stop-opacity=".12"/><stop offset=".25" stop-color="#fff" stop-opacity="0"/><stop offset="1" stop-color="#000" stop-opacity=".3"/></linearGradient>
     <radialGradient id="cs-anat-glow" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#3BA4FF" stop-opacity=".95"/><stop offset="1" stop-color="#3BA4FF" stop-opacity="0"/></radialGradient>
     <filter id="cs-anat-blur" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="7"/></filter>
+    <pattern id="cs-anat-weave" width="4" height="4" patternUnits="userSpaceOnUse"><path d="M0 4L4 0" stroke="#fff" stroke-opacity=".05" stroke-width="1"/><path d="M0 0L4 4" stroke="#000" stroke-opacity=".08" stroke-width="1"/></pattern>
     <clipPath id="cs-anat-clip"><rect x="74" y="96" width="252" height="412" rx="44"/></clipPath>
   </defs>
   <ellipse class="case__shadow" cx="200" cy="568" rx="150" ry="15" fill="#000" opacity=".6" filter="url(#cs-anat-blur)"/>
@@ -317,36 +299,35 @@
       <rect class="case__fabric" x="74" y="96" width="252" height="412" fill="var(--cover)"/>
       <rect x="74" y="96" width="252" height="412" fill="url(#cs-anat-vert)"/>
       <rect x="74" y="96" width="252" height="412" fill="url(#cs-anat-shade)"/>
-      <g fill="#000" opacity=".26"><path d="M74 96h62l-62 62z"/><path d="M326 96h-62l62 62z"/><path d="M74 508h62l-62-62z"/><path d="M326 508h-62l62-62z"/></g>
-      <rect x="74" y="488" width="252" height="20" fill="#000" opacity=".32"/>
-      <path d="M74 488H326" stroke="#fff" stroke-opacity=".08" stroke-width="2"/>
-      <path d="M312 110V486" stroke="#000" stroke-opacity=".28" stroke-width="2" stroke-dasharray="3 5"/>
+      <rect x="74" y="96" width="252" height="412" fill="url(#cs-anat-weave)" opacity=".5"/>
+      <g fill="#000" opacity=".2"><path d="M74 96h54l-54 54z"/><path d="M326 96h-54l54 54z"/><path d="M74 508h54l-54-54z"/><path d="M326 508h-54l54-54z"/></g>
+      <g fill="none" stroke="#fff" stroke-opacity=".1" stroke-width="1.2" stroke-dasharray="3 4">
+        <path d="M74 158L136 96M326 158L264 96M74 446L136 508M326 446L264 508"/>
+      </g>
+      <rect x="74" y="490" width="252" height="18" fill="#000" opacity=".3"/>
+      <path d="M74 490H326" stroke="#fff" stroke-opacity=".08" stroke-width="1.5"/>
+      <path d="M314 112V478" stroke="#000" stroke-opacity=".22" stroke-width="1.6"/>
     </g>
+    <rect x="80" y="102" width="240" height="400" rx="38" fill="none" stroke="#fff" stroke-opacity=".09" stroke-width="1.2" stroke-dasharray="4 4"/>
     <rect class="case__outline" x="74" y="96" width="252" height="412" rx="44" fill="none" stroke="#3BA4FF" stroke-width="3" opacity="0"/>
     <g class="case__slot"><rect x="150" y="98" width="100" height="18" rx="9" fill="#05070B"/><rect class="case__slot-glow" x="150" y="98" width="100" height="18" rx="9" fill="none" stroke="#3BA4FF" stroke-width="2.5"/></g>
-    <g class="case__pocket">
-      <rect x="108" y="256" width="176" height="200" rx="16" fill="#000" opacity=".16"/>
-      <rect x="108" y="256" width="176" height="200" rx="16" fill="none" stroke="#000" stroke-opacity=".35" stroke-width="2"/>
-      <rect class="case__pocket-open" x="122" y="270" width="148" height="0" rx="4" fill="#020305"/>
-      <path class="case__zipline" d="M122 272H270" stroke="#000" stroke-opacity=".55" stroke-width="4" stroke-linecap="round"/>
-      <g class="case__zip"><rect x="126" y="266" width="12" height="12" rx="3" fill="#20242C"/><rect x="127" y="276" width="10" height="40" rx="3" fill="#1F72E0"/><rect x="129" y="282" width="2" height="28" rx="1" fill="#fff" opacity=".6"/></g>
+    <g class="case__logo">
+      <image class="case__logo-img case__logo--light" href="assets/img/trackie-logo-light.png" x="216" y="128" width="92" height="74" preserveAspectRatio="xMidYMid meet"/>
+      <image class="case__logo-img case__logo--dark" href="assets/img/trackie-logo-dark.png" x="216" y="128" width="92" height="74" preserveAspectRatio="xMidYMid meet"/>
     </g>
-    <g class="case__tracker">
-      <circle class="case__ring" cx="286" cy="178" r="20" fill="none" stroke="#3BA4FF" stroke-width="2" opacity="0"/>
-      <circle class="case__ring" cx="286" cy="178" r="20" fill="none" stroke="#3BA4FF" stroke-width="2" opacity="0"/>
-      <rect x="262" y="148" width="48" height="60" rx="9" fill="#000" opacity=".3"/>
-      <rect x="262" y="148" width="48" height="60" rx="9" fill="none" stroke="#3BA4FF" stroke-opacity=".55" stroke-width="1.5"/>
-      <circle class="case__tracker-glow" cx="286" cy="178" r="16" fill="url(#cs-anat-glow)"/>
-      <path class="case__tracker-pin" d="M286 166c-5 0-8.6 3.7-8.6 8.4 0 6 8.6 13.4 8.6 13.4s8.6-7.4 8.6-13.4c0-4.7-3.6-8.4-8.6-8.4z" fill="none" stroke="#7CC4FF" stroke-width="2.2"/>
-      <circle cx="286" cy="174.6" r="2.6" fill="#7CC4FF"/>
-      <g class="case__tag" opacity="0"><circle cx="286" cy="178" r="15" fill="#E9EDF2"/><circle cx="286" cy="178" r="10" fill="none" stroke="#C3CAD3" stroke-width="1.5"/></g>
+    <g class="case__sidezip" opacity="0">
+      <path class="case__sidezip-line" d="M314 190V420" stroke="#3BA4FF" stroke-width="3" stroke-linecap="round" fill="none"/>
+      <g class="case__zip"><rect x="308" y="184" width="12" height="12" rx="3" fill="#20242C"/><rect x="309" y="194" width="10" height="34" rx="3" fill="#1F72E0"/></g>
     </g>
-    <g class="case__label" transform="translate(108 138)">
-      <rect width="100" height="34" rx="7" fill="#05070B" opacity=".9"/>
-      <g transform="translate(4 2) scale(.25)"><rect x="34" y="34" width="52" height="66" rx="10" fill="#fff"/><rect x="34" y="34" width="52" height="40" rx="10" fill="#4FA6DC"/><path d="M60 41c-7.2 0-12.4 5.3-12.4 12.1 0 8.6 12.4 19.4 12.4 19.4s12.4-10.8 12.4-19.4C72.4 46.3 67.2 41 60 41z" fill="#fff"/><path d="M24 70c-9 12 20 22 50 12 14-5 26-14 34-24-11 8-24 15-37 18-22 5-43 3-47-6z" fill="#2E8BEA"/></g>
-      <text x="38" y="22" fill="#fff" font-family="Archivo, sans-serif" font-size="12.5" font-weight="800" letter-spacing=".6">TRACKIE</text>
+    <g class="case__tracker" opacity="0">
+      <circle class="case__ring" cx="268" cy="352" r="22" fill="none" stroke="#3BA4FF" stroke-width="2" opacity="0"/>
+      <circle class="case__ring" cx="268" cy="352" r="22" fill="none" stroke="#3BA4FF" stroke-width="2" opacity="0"/>
+      <rect x="240" y="318" width="56" height="68" rx="10" fill="#3BA4FF" fill-opacity=".1" stroke="#3BA4FF" stroke-width="1.6" stroke-dasharray="5 4"/>
+      <circle class="case__tracker-glow" cx="268" cy="352" r="18" fill="url(#cs-anat-glow)"/>
+      <g class="case__tag"><circle cx="268" cy="352" r="15" fill="#E9EDF2"/><circle cx="268" cy="352" r="10" fill="none" stroke="#C3CAD3" stroke-width="1.5"/></g>
+      <path d="M268 334c-4 0-7 3-7 6.8 0 4.9 7 10.9 7 10.9s7-6 7-10.9c0-3.8-3-6.8-7-6.8z" fill="#3BA4FF" transform="translate(0 -24)"/>
     </g>
-    <path class="case__sheen" d="M96 130c-6 90-6 250 0 350" stroke="#fff" stroke-opacity=".09" stroke-width="10" stroke-linecap="round" fill="none"/>
+    <path class="case__sheen" d="M98 136c-6 90-6 240 0 340" stroke="#fff" stroke-opacity=".08" stroke-width="12" stroke-linecap="round" fill="none"/>
   </g>
   
 </svg></div>
@@ -408,6 +389,7 @@
     <linearGradient id="cs-cw-vert" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff" stop-opacity=".12"/><stop offset=".25" stop-color="#fff" stop-opacity="0"/><stop offset="1" stop-color="#000" stop-opacity=".3"/></linearGradient>
     <radialGradient id="cs-cw-glow" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#3BA4FF" stop-opacity=".95"/><stop offset="1" stop-color="#3BA4FF" stop-opacity="0"/></radialGradient>
     <filter id="cs-cw-blur" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="7"/></filter>
+    <pattern id="cs-cw-weave" width="4" height="4" patternUnits="userSpaceOnUse"><path d="M0 4L4 0" stroke="#fff" stroke-opacity=".05" stroke-width="1"/><path d="M0 0L4 4" stroke="#000" stroke-opacity=".08" stroke-width="1"/></pattern>
     <clipPath id="cs-cw-clip"><rect x="74" y="96" width="252" height="412" rx="44"/></clipPath>
   </defs>
   <ellipse class="case__shadow" cx="200" cy="568" rx="150" ry="15" fill="#000" opacity=".6" filter="url(#cs-cw-blur)"/>
@@ -423,36 +405,35 @@
       <rect class="case__fabric" x="74" y="96" width="252" height="412" fill="var(--cover)"/>
       <rect x="74" y="96" width="252" height="412" fill="url(#cs-cw-vert)"/>
       <rect x="74" y="96" width="252" height="412" fill="url(#cs-cw-shade)"/>
-      <g fill="#000" opacity=".26"><path d="M74 96h62l-62 62z"/><path d="M326 96h-62l62 62z"/><path d="M74 508h62l-62-62z"/><path d="M326 508h-62l62-62z"/></g>
-      <rect x="74" y="488" width="252" height="20" fill="#000" opacity=".32"/>
-      <path d="M74 488H326" stroke="#fff" stroke-opacity=".08" stroke-width="2"/>
-      <path d="M312 110V486" stroke="#000" stroke-opacity=".28" stroke-width="2" stroke-dasharray="3 5"/>
+      <rect x="74" y="96" width="252" height="412" fill="url(#cs-cw-weave)" opacity=".5"/>
+      <g fill="#000" opacity=".2"><path d="M74 96h54l-54 54z"/><path d="M326 96h-54l54 54z"/><path d="M74 508h54l-54-54z"/><path d="M326 508h-54l54-54z"/></g>
+      <g fill="none" stroke="#fff" stroke-opacity=".1" stroke-width="1.2" stroke-dasharray="3 4">
+        <path d="M74 158L136 96M326 158L264 96M74 446L136 508M326 446L264 508"/>
+      </g>
+      <rect x="74" y="490" width="252" height="18" fill="#000" opacity=".3"/>
+      <path d="M74 490H326" stroke="#fff" stroke-opacity=".08" stroke-width="1.5"/>
+      <path d="M314 112V478" stroke="#000" stroke-opacity=".22" stroke-width="1.6"/>
     </g>
+    <rect x="80" y="102" width="240" height="400" rx="38" fill="none" stroke="#fff" stroke-opacity=".09" stroke-width="1.2" stroke-dasharray="4 4"/>
     <rect class="case__outline" x="74" y="96" width="252" height="412" rx="44" fill="none" stroke="#3BA4FF" stroke-width="3" opacity="0"/>
     <g class="case__slot"><rect x="150" y="98" width="100" height="18" rx="9" fill="#05070B"/><rect class="case__slot-glow" x="150" y="98" width="100" height="18" rx="9" fill="none" stroke="#3BA4FF" stroke-width="2.5"/></g>
-    <g class="case__pocket">
-      <rect x="108" y="256" width="176" height="200" rx="16" fill="#000" opacity=".16"/>
-      <rect x="108" y="256" width="176" height="200" rx="16" fill="none" stroke="#000" stroke-opacity=".35" stroke-width="2"/>
-      <rect class="case__pocket-open" x="122" y="270" width="148" height="0" rx="4" fill="#020305"/>
-      <path class="case__zipline" d="M122 272H270" stroke="#000" stroke-opacity=".55" stroke-width="4" stroke-linecap="round"/>
-      <g class="case__zip"><rect x="126" y="266" width="12" height="12" rx="3" fill="#20242C"/><rect x="127" y="276" width="10" height="40" rx="3" fill="#1F72E0"/><rect x="129" y="282" width="2" height="28" rx="1" fill="#fff" opacity=".6"/></g>
+    <g class="case__logo">
+      <image class="case__logo-img case__logo--light" href="assets/img/trackie-logo-light.png" x="216" y="128" width="92" height="74" preserveAspectRatio="xMidYMid meet"/>
+      <image class="case__logo-img case__logo--dark" href="assets/img/trackie-logo-dark.png" x="216" y="128" width="92" height="74" preserveAspectRatio="xMidYMid meet"/>
     </g>
-    <g class="case__tracker">
-      <circle class="case__ring" cx="286" cy="178" r="20" fill="none" stroke="#3BA4FF" stroke-width="2" opacity="0"/>
-      <circle class="case__ring" cx="286" cy="178" r="20" fill="none" stroke="#3BA4FF" stroke-width="2" opacity="0"/>
-      <rect x="262" y="148" width="48" height="60" rx="9" fill="#000" opacity=".3"/>
-      <rect x="262" y="148" width="48" height="60" rx="9" fill="none" stroke="#3BA4FF" stroke-opacity=".55" stroke-width="1.5"/>
-      <circle class="case__tracker-glow" cx="286" cy="178" r="16" fill="url(#cs-cw-glow)"/>
-      <path class="case__tracker-pin" d="M286 166c-5 0-8.6 3.7-8.6 8.4 0 6 8.6 13.4 8.6 13.4s8.6-7.4 8.6-13.4c0-4.7-3.6-8.4-8.6-8.4z" fill="none" stroke="#7CC4FF" stroke-width="2.2"/>
-      <circle cx="286" cy="174.6" r="2.6" fill="#7CC4FF"/>
-      <g class="case__tag" opacity="0"><circle cx="286" cy="178" r="15" fill="#E9EDF2"/><circle cx="286" cy="178" r="10" fill="none" stroke="#C3CAD3" stroke-width="1.5"/></g>
+    <g class="case__sidezip" opacity="0">
+      <path class="case__sidezip-line" d="M314 190V420" stroke="#3BA4FF" stroke-width="3" stroke-linecap="round" fill="none"/>
+      <g class="case__zip"><rect x="308" y="184" width="12" height="12" rx="3" fill="#20242C"/><rect x="309" y="194" width="10" height="34" rx="3" fill="#1F72E0"/></g>
     </g>
-    <g class="case__label" transform="translate(108 138)">
-      <rect width="100" height="34" rx="7" fill="#05070B" opacity=".9"/>
-      <g transform="translate(4 2) scale(.25)"><rect x="34" y="34" width="52" height="66" rx="10" fill="#fff"/><rect x="34" y="34" width="52" height="40" rx="10" fill="#4FA6DC"/><path d="M60 41c-7.2 0-12.4 5.3-12.4 12.1 0 8.6 12.4 19.4 12.4 19.4s12.4-10.8 12.4-19.4C72.4 46.3 67.2 41 60 41z" fill="#fff"/><path d="M24 70c-9 12 20 22 50 12 14-5 26-14 34-24-11 8-24 15-37 18-22 5-43 3-47-6z" fill="#2E8BEA"/></g>
-      <text x="38" y="22" fill="#fff" font-family="Archivo, sans-serif" font-size="12.5" font-weight="800" letter-spacing=".6">TRACKIE</text>
+    <g class="case__tracker" opacity="0">
+      <circle class="case__ring" cx="268" cy="352" r="22" fill="none" stroke="#3BA4FF" stroke-width="2" opacity="0"/>
+      <circle class="case__ring" cx="268" cy="352" r="22" fill="none" stroke="#3BA4FF" stroke-width="2" opacity="0"/>
+      <rect x="240" y="318" width="56" height="68" rx="10" fill="#3BA4FF" fill-opacity=".1" stroke="#3BA4FF" stroke-width="1.6" stroke-dasharray="5 4"/>
+      <circle class="case__tracker-glow" cx="268" cy="352" r="18" fill="url(#cs-cw-glow)"/>
+      <g class="case__tag"><circle cx="268" cy="352" r="15" fill="#E9EDF2"/><circle cx="268" cy="352" r="10" fill="none" stroke="#C3CAD3" stroke-width="1.5"/></g>
+      <path d="M268 334c-4 0-7 3-7 6.8 0 4.9 7 10.9 7 10.9s7-6 7-10.9c0-3.8-3-6.8-7-6.8z" fill="#3BA4FF" transform="translate(0 -24)"/>
     </g>
-    <path class="case__sheen" d="M96 130c-6 90-6 250 0 350" stroke="#fff" stroke-opacity=".09" stroke-width="10" stroke-linecap="round" fill="none"/>
+    <path class="case__sheen" d="M98 136c-6 90-6 240 0 340" stroke="#fff" stroke-opacity=".08" stroke-width="12" stroke-linecap="round" fill="none"/>
   </g>
   
 </svg></div>
@@ -520,6 +501,7 @@
     <linearGradient id="cs-buy-vert" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff" stop-opacity=".12"/><stop offset=".25" stop-color="#fff" stop-opacity="0"/><stop offset="1" stop-color="#000" stop-opacity=".3"/></linearGradient>
     <radialGradient id="cs-buy-glow" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#3BA4FF" stop-opacity=".95"/><stop offset="1" stop-color="#3BA4FF" stop-opacity="0"/></radialGradient>
     <filter id="cs-buy-blur" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="7"/></filter>
+    <pattern id="cs-buy-weave" width="4" height="4" patternUnits="userSpaceOnUse"><path d="M0 4L4 0" stroke="#fff" stroke-opacity=".05" stroke-width="1"/><path d="M0 0L4 4" stroke="#000" stroke-opacity=".08" stroke-width="1"/></pattern>
     <clipPath id="cs-buy-clip"><rect x="74" y="96" width="252" height="412" rx="44"/></clipPath>
   </defs>
   <ellipse class="case__shadow" cx="200" cy="568" rx="150" ry="15" fill="#000" opacity=".6" filter="url(#cs-buy-blur)"/>
@@ -535,36 +517,35 @@
       <rect class="case__fabric" x="74" y="96" width="252" height="412" fill="var(--cover)"/>
       <rect x="74" y="96" width="252" height="412" fill="url(#cs-buy-vert)"/>
       <rect x="74" y="96" width="252" height="412" fill="url(#cs-buy-shade)"/>
-      <g fill="#000" opacity=".26"><path d="M74 96h62l-62 62z"/><path d="M326 96h-62l62 62z"/><path d="M74 508h62l-62-62z"/><path d="M326 508h-62l62-62z"/></g>
-      <rect x="74" y="488" width="252" height="20" fill="#000" opacity=".32"/>
-      <path d="M74 488H326" stroke="#fff" stroke-opacity=".08" stroke-width="2"/>
-      <path d="M312 110V486" stroke="#000" stroke-opacity=".28" stroke-width="2" stroke-dasharray="3 5"/>
+      <rect x="74" y="96" width="252" height="412" fill="url(#cs-buy-weave)" opacity=".5"/>
+      <g fill="#000" opacity=".2"><path d="M74 96h54l-54 54z"/><path d="M326 96h-54l54 54z"/><path d="M74 508h54l-54-54z"/><path d="M326 508h-54l54-54z"/></g>
+      <g fill="none" stroke="#fff" stroke-opacity=".1" stroke-width="1.2" stroke-dasharray="3 4">
+        <path d="M74 158L136 96M326 158L264 96M74 446L136 508M326 446L264 508"/>
+      </g>
+      <rect x="74" y="490" width="252" height="18" fill="#000" opacity=".3"/>
+      <path d="M74 490H326" stroke="#fff" stroke-opacity=".08" stroke-width="1.5"/>
+      <path d="M314 112V478" stroke="#000" stroke-opacity=".22" stroke-width="1.6"/>
     </g>
+    <rect x="80" y="102" width="240" height="400" rx="38" fill="none" stroke="#fff" stroke-opacity=".09" stroke-width="1.2" stroke-dasharray="4 4"/>
     <rect class="case__outline" x="74" y="96" width="252" height="412" rx="44" fill="none" stroke="#3BA4FF" stroke-width="3" opacity="0"/>
     <g class="case__slot"><rect x="150" y="98" width="100" height="18" rx="9" fill="#05070B"/><rect class="case__slot-glow" x="150" y="98" width="100" height="18" rx="9" fill="none" stroke="#3BA4FF" stroke-width="2.5"/></g>
-    <g class="case__pocket">
-      <rect x="108" y="256" width="176" height="200" rx="16" fill="#000" opacity=".16"/>
-      <rect x="108" y="256" width="176" height="200" rx="16" fill="none" stroke="#000" stroke-opacity=".35" stroke-width="2"/>
-      <rect class="case__pocket-open" x="122" y="270" width="148" height="0" rx="4" fill="#020305"/>
-      <path class="case__zipline" d="M122 272H270" stroke="#000" stroke-opacity=".55" stroke-width="4" stroke-linecap="round"/>
-      <g class="case__zip"><rect x="126" y="266" width="12" height="12" rx="3" fill="#20242C"/><rect x="127" y="276" width="10" height="40" rx="3" fill="#1F72E0"/><rect x="129" y="282" width="2" height="28" rx="1" fill="#fff" opacity=".6"/></g>
+    <g class="case__logo">
+      <image class="case__logo-img case__logo--light" href="assets/img/trackie-logo-light.png" x="216" y="128" width="92" height="74" preserveAspectRatio="xMidYMid meet"/>
+      <image class="case__logo-img case__logo--dark" href="assets/img/trackie-logo-dark.png" x="216" y="128" width="92" height="74" preserveAspectRatio="xMidYMid meet"/>
     </g>
-    <g class="case__tracker">
-      <circle class="case__ring" cx="286" cy="178" r="20" fill="none" stroke="#3BA4FF" stroke-width="2" opacity="0"/>
-      <circle class="case__ring" cx="286" cy="178" r="20" fill="none" stroke="#3BA4FF" stroke-width="2" opacity="0"/>
-      <rect x="262" y="148" width="48" height="60" rx="9" fill="#000" opacity=".3"/>
-      <rect x="262" y="148" width="48" height="60" rx="9" fill="none" stroke="#3BA4FF" stroke-opacity=".55" stroke-width="1.5"/>
-      <circle class="case__tracker-glow" cx="286" cy="178" r="16" fill="url(#cs-buy-glow)"/>
-      <path class="case__tracker-pin" d="M286 166c-5 0-8.6 3.7-8.6 8.4 0 6 8.6 13.4 8.6 13.4s8.6-7.4 8.6-13.4c0-4.7-3.6-8.4-8.6-8.4z" fill="none" stroke="#7CC4FF" stroke-width="2.2"/>
-      <circle cx="286" cy="174.6" r="2.6" fill="#7CC4FF"/>
-      <g class="case__tag" opacity="0"><circle cx="286" cy="178" r="15" fill="#E9EDF2"/><circle cx="286" cy="178" r="10" fill="none" stroke="#C3CAD3" stroke-width="1.5"/></g>
+    <g class="case__sidezip" opacity="0">
+      <path class="case__sidezip-line" d="M314 190V420" stroke="#3BA4FF" stroke-width="3" stroke-linecap="round" fill="none"/>
+      <g class="case__zip"><rect x="308" y="184" width="12" height="12" rx="3" fill="#20242C"/><rect x="309" y="194" width="10" height="34" rx="3" fill="#1F72E0"/></g>
     </g>
-    <g class="case__label" transform="translate(108 138)">
-      <rect width="100" height="34" rx="7" fill="#05070B" opacity=".9"/>
-      <g transform="translate(4 2) scale(.25)"><rect x="34" y="34" width="52" height="66" rx="10" fill="#fff"/><rect x="34" y="34" width="52" height="40" rx="10" fill="#4FA6DC"/><path d="M60 41c-7.2 0-12.4 5.3-12.4 12.1 0 8.6 12.4 19.4 12.4 19.4s12.4-10.8 12.4-19.4C72.4 46.3 67.2 41 60 41z" fill="#fff"/><path d="M24 70c-9 12 20 22 50 12 14-5 26-14 34-24-11 8-24 15-37 18-22 5-43 3-47-6z" fill="#2E8BEA"/></g>
-      <text x="38" y="22" fill="#fff" font-family="Archivo, sans-serif" font-size="12.5" font-weight="800" letter-spacing=".6">TRACKIE</text>
+    <g class="case__tracker" opacity="0">
+      <circle class="case__ring" cx="268" cy="352" r="22" fill="none" stroke="#3BA4FF" stroke-width="2" opacity="0"/>
+      <circle class="case__ring" cx="268" cy="352" r="22" fill="none" stroke="#3BA4FF" stroke-width="2" opacity="0"/>
+      <rect x="240" y="318" width="56" height="68" rx="10" fill="#3BA4FF" fill-opacity=".1" stroke="#3BA4FF" stroke-width="1.6" stroke-dasharray="5 4"/>
+      <circle class="case__tracker-glow" cx="268" cy="352" r="18" fill="url(#cs-buy-glow)"/>
+      <g class="case__tag"><circle cx="268" cy="352" r="15" fill="#E9EDF2"/><circle cx="268" cy="352" r="10" fill="none" stroke="#C3CAD3" stroke-width="1.5"/></g>
+      <path d="M268 334c-4 0-7 3-7 6.8 0 4.9 7 10.9 7 10.9s7-6 7-10.9c0-3.8-3-6.8-7-6.8z" fill="#3BA4FF" transform="translate(0 -24)"/>
     </g>
-    <path class="case__sheen" d="M96 130c-6 90-6 250 0 350" stroke="#fff" stroke-opacity=".09" stroke-width="10" stroke-linecap="round" fill="none"/>
+    <path class="case__sheen" d="M98 136c-6 90-6 240 0 340" stroke="#fff" stroke-opacity=".08" stroke-width="12" stroke-linecap="round" fill="none"/>
   </g>
   
 </svg></div>
@@ -628,20 +609,7 @@
 <footer class="ftr" data-footer>
   <div class="container ftr__top">
     <div class="ftr__brand">
-      <span class="logo"><svg class="logo__mark" viewBox="0 0 120 120" aria-hidden="true" focusable="false">
-  <defs>
-    <linearGradient id="lg-ftr-body" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#6BB8E8"/><stop offset="1" stop-color="#3E97D6"/></linearGradient>
-    <linearGradient id="lg-ftr-sw" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#1F6FC4"/><stop offset=".55" stop-color="#2E8BEA"/><stop offset="1" stop-color="#ffffff"/></linearGradient>
-    <clipPath id="lg-ftr-clip"><rect x="34" y="34" width="52" height="66" rx="10"/></clipPath>
-  </defs>
-  <path class="logo__handle" d="M47 36V24a9 9 0 0 1 9-9h8a9 9 0 0 1 9 9v12" fill="none" stroke="#4FA6DC" stroke-width="6" stroke-linecap="round"/>
-  <rect class="logo__body" x="34" y="34" width="52" height="66" rx="10" fill="#fff"/>
-  <g clip-path="url(#lg-ftr-clip)"><rect class="logo__fill" x="30" y="30" width="60" height="44" fill="url(#lg-ftr-body)"/></g>
-  <path class="logo__pin" d="M60 41c-7.2 0-12.4 5.3-12.4 12.1 0 8.6 12.4 19.4 12.4 19.4s12.4-10.8 12.4-19.4C72.4 46.3 67.2 41 60 41z" fill="#fff"/>
-  <circle class="logo__dot" cx="60" cy="53" r="4.6" fill="#4FA6DC"/>
-  <path class="logo__swoosh" d="M24 70c-9 12 20 22 50 12 14-5 26-14 34-24-11 8-24 15-37 18-22 5-43 3-47-6z" fill="url(#lg-ftr-sw)"/>
-  <path class="logo__plane" transform="translate(88 20) rotate(45 12 12)" d="M21 16v-2l-8-5V3.5a1.5 1.5 0 0 0-3 0V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5l8 2.5z" fill="#fff"/>
-</svg><span class="logo__text"><span class="logo__word">TRACKIE<sup>®</sup></span><span class="logo__tag">Your luggage’s best friend</span></span></span>
+      <span class="logo"><img class="logo__mark logo__mark--img" src="assets/img/trackie-mark.png" alt="" width="152" height="140"><span class="logo__text"><span class="logo__word">TRACKIE<sup>®</sup></span><span class="logo__tag">Your luggage’s best friend</span></span></span>
       <p class="ftr__blurb">The stretch-fit luggage cover with a hidden tracker pocket. Built for every journey.</p>
       <div class="ftr__social">
         <a href="#" data-social="instagram" aria-label="Instagram"><svg class="icon icon--instagram" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="3.5" y="3.5" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.3" cy="6.7" r=".6"/></svg></a>
@@ -710,6 +678,7 @@
     <linearGradient id="cs-empty-vert" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff" stop-opacity=".12"/><stop offset=".25" stop-color="#fff" stop-opacity="0"/><stop offset="1" stop-color="#000" stop-opacity=".3"/></linearGradient>
     <radialGradient id="cs-empty-glow" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#3BA4FF" stop-opacity=".95"/><stop offset="1" stop-color="#3BA4FF" stop-opacity="0"/></radialGradient>
     <filter id="cs-empty-blur" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="7"/></filter>
+    <pattern id="cs-empty-weave" width="4" height="4" patternUnits="userSpaceOnUse"><path d="M0 4L4 0" stroke="#fff" stroke-opacity=".05" stroke-width="1"/><path d="M0 0L4 4" stroke="#000" stroke-opacity=".08" stroke-width="1"/></pattern>
     <clipPath id="cs-empty-clip"><rect x="74" y="96" width="252" height="412" rx="44"/></clipPath>
   </defs>
   <ellipse class="case__shadow" cx="200" cy="568" rx="150" ry="15" fill="#000" opacity=".6" filter="url(#cs-empty-blur)"/>
@@ -725,36 +694,35 @@
       <rect class="case__fabric" x="74" y="96" width="252" height="412" fill="var(--cover)"/>
       <rect x="74" y="96" width="252" height="412" fill="url(#cs-empty-vert)"/>
       <rect x="74" y="96" width="252" height="412" fill="url(#cs-empty-shade)"/>
-      <g fill="#000" opacity=".26"><path d="M74 96h62l-62 62z"/><path d="M326 96h-62l62 62z"/><path d="M74 508h62l-62-62z"/><path d="M326 508h-62l62-62z"/></g>
-      <rect x="74" y="488" width="252" height="20" fill="#000" opacity=".32"/>
-      <path d="M74 488H326" stroke="#fff" stroke-opacity=".08" stroke-width="2"/>
-      <path d="M312 110V486" stroke="#000" stroke-opacity=".28" stroke-width="2" stroke-dasharray="3 5"/>
+      <rect x="74" y="96" width="252" height="412" fill="url(#cs-empty-weave)" opacity=".5"/>
+      <g fill="#000" opacity=".2"><path d="M74 96h54l-54 54z"/><path d="M326 96h-54l54 54z"/><path d="M74 508h54l-54-54z"/><path d="M326 508h-54l54-54z"/></g>
+      <g fill="none" stroke="#fff" stroke-opacity=".1" stroke-width="1.2" stroke-dasharray="3 4">
+        <path d="M74 158L136 96M326 158L264 96M74 446L136 508M326 446L264 508"/>
+      </g>
+      <rect x="74" y="490" width="252" height="18" fill="#000" opacity=".3"/>
+      <path d="M74 490H326" stroke="#fff" stroke-opacity=".08" stroke-width="1.5"/>
+      <path d="M314 112V478" stroke="#000" stroke-opacity=".22" stroke-width="1.6"/>
     </g>
+    <rect x="80" y="102" width="240" height="400" rx="38" fill="none" stroke="#fff" stroke-opacity=".09" stroke-width="1.2" stroke-dasharray="4 4"/>
     <rect class="case__outline" x="74" y="96" width="252" height="412" rx="44" fill="none" stroke="#3BA4FF" stroke-width="3" opacity="0"/>
     <g class="case__slot"><rect x="150" y="98" width="100" height="18" rx="9" fill="#05070B"/><rect class="case__slot-glow" x="150" y="98" width="100" height="18" rx="9" fill="none" stroke="#3BA4FF" stroke-width="2.5"/></g>
-    <g class="case__pocket">
-      <rect x="108" y="256" width="176" height="200" rx="16" fill="#000" opacity=".16"/>
-      <rect x="108" y="256" width="176" height="200" rx="16" fill="none" stroke="#000" stroke-opacity=".35" stroke-width="2"/>
-      <rect class="case__pocket-open" x="122" y="270" width="148" height="0" rx="4" fill="#020305"/>
-      <path class="case__zipline" d="M122 272H270" stroke="#000" stroke-opacity=".55" stroke-width="4" stroke-linecap="round"/>
-      <g class="case__zip"><rect x="126" y="266" width="12" height="12" rx="3" fill="#20242C"/><rect x="127" y="276" width="10" height="40" rx="3" fill="#1F72E0"/><rect x="129" y="282" width="2" height="28" rx="1" fill="#fff" opacity=".6"/></g>
+    <g class="case__logo">
+      <image class="case__logo-img case__logo--light" href="assets/img/trackie-logo-light.png" x="216" y="128" width="92" height="74" preserveAspectRatio="xMidYMid meet"/>
+      <image class="case__logo-img case__logo--dark" href="assets/img/trackie-logo-dark.png" x="216" y="128" width="92" height="74" preserveAspectRatio="xMidYMid meet"/>
     </g>
-    <g class="case__tracker">
-      <circle class="case__ring" cx="286" cy="178" r="20" fill="none" stroke="#3BA4FF" stroke-width="2" opacity="0"/>
-      <circle class="case__ring" cx="286" cy="178" r="20" fill="none" stroke="#3BA4FF" stroke-width="2" opacity="0"/>
-      <rect x="262" y="148" width="48" height="60" rx="9" fill="#000" opacity=".3"/>
-      <rect x="262" y="148" width="48" height="60" rx="9" fill="none" stroke="#3BA4FF" stroke-opacity=".55" stroke-width="1.5"/>
-      <circle class="case__tracker-glow" cx="286" cy="178" r="16" fill="url(#cs-empty-glow)"/>
-      <path class="case__tracker-pin" d="M286 166c-5 0-8.6 3.7-8.6 8.4 0 6 8.6 13.4 8.6 13.4s8.6-7.4 8.6-13.4c0-4.7-3.6-8.4-8.6-8.4z" fill="none" stroke="#7CC4FF" stroke-width="2.2"/>
-      <circle cx="286" cy="174.6" r="2.6" fill="#7CC4FF"/>
-      <g class="case__tag" opacity="0"><circle cx="286" cy="178" r="15" fill="#E9EDF2"/><circle cx="286" cy="178" r="10" fill="none" stroke="#C3CAD3" stroke-width="1.5"/></g>
+    <g class="case__sidezip" opacity="0">
+      <path class="case__sidezip-line" d="M314 190V420" stroke="#3BA4FF" stroke-width="3" stroke-linecap="round" fill="none"/>
+      <g class="case__zip"><rect x="308" y="184" width="12" height="12" rx="3" fill="#20242C"/><rect x="309" y="194" width="10" height="34" rx="3" fill="#1F72E0"/></g>
     </g>
-    <g class="case__label" transform="translate(108 138)">
-      <rect width="100" height="34" rx="7" fill="#05070B" opacity=".9"/>
-      <g transform="translate(4 2) scale(.25)"><rect x="34" y="34" width="52" height="66" rx="10" fill="#fff"/><rect x="34" y="34" width="52" height="40" rx="10" fill="#4FA6DC"/><path d="M60 41c-7.2 0-12.4 5.3-12.4 12.1 0 8.6 12.4 19.4 12.4 19.4s12.4-10.8 12.4-19.4C72.4 46.3 67.2 41 60 41z" fill="#fff"/><path d="M24 70c-9 12 20 22 50 12 14-5 26-14 34-24-11 8-24 15-37 18-22 5-43 3-47-6z" fill="#2E8BEA"/></g>
-      <text x="38" y="22" fill="#fff" font-family="Archivo, sans-serif" font-size="12.5" font-weight="800" letter-spacing=".6">TRACKIE</text>
+    <g class="case__tracker" opacity="0">
+      <circle class="case__ring" cx="268" cy="352" r="22" fill="none" stroke="#3BA4FF" stroke-width="2" opacity="0"/>
+      <circle class="case__ring" cx="268" cy="352" r="22" fill="none" stroke="#3BA4FF" stroke-width="2" opacity="0"/>
+      <rect x="240" y="318" width="56" height="68" rx="10" fill="#3BA4FF" fill-opacity=".1" stroke="#3BA4FF" stroke-width="1.6" stroke-dasharray="5 4"/>
+      <circle class="case__tracker-glow" cx="268" cy="352" r="18" fill="url(#cs-empty-glow)"/>
+      <g class="case__tag"><circle cx="268" cy="352" r="15" fill="#E9EDF2"/><circle cx="268" cy="352" r="10" fill="none" stroke="#C3CAD3" stroke-width="1.5"/></g>
+      <path d="M268 334c-4 0-7 3-7 6.8 0 4.9 7 10.9 7 10.9s7-6 7-10.9c0-3.8-3-6.8-7-6.8z" fill="#3BA4FF" transform="translate(0 -24)"/>
     </g>
-    <path class="case__sheen" d="M96 130c-6 90-6 250 0 350" stroke="#fff" stroke-opacity=".09" stroke-width="10" stroke-linecap="round" fill="none"/>
+    <path class="case__sheen" d="M98 136c-6 90-6 240 0 340" stroke="#fff" stroke-opacity=".08" stroke-width="12" stroke-linecap="round" fill="none"/>
   </g>
   
 </svg></div>
@@ -776,20 +744,7 @@
 
 <div class="pt" aria-hidden="true">
   <div class="pt__panel"></div>
-  <div class="pt__panel pt__panel--2"><span class="logo"><svg class="logo__mark" viewBox="0 0 120 120" aria-hidden="true" focusable="false">
-  <defs>
-    <linearGradient id="lg-pt-body" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#6BB8E8"/><stop offset="1" stop-color="#3E97D6"/></linearGradient>
-    <linearGradient id="lg-pt-sw" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#1F6FC4"/><stop offset=".55" stop-color="#2E8BEA"/><stop offset="1" stop-color="#ffffff"/></linearGradient>
-    <clipPath id="lg-pt-clip"><rect x="34" y="34" width="52" height="66" rx="10"/></clipPath>
-  </defs>
-  <path class="logo__handle" d="M47 36V24a9 9 0 0 1 9-9h8a9 9 0 0 1 9 9v12" fill="none" stroke="#4FA6DC" stroke-width="6" stroke-linecap="round"/>
-  <rect class="logo__body" x="34" y="34" width="52" height="66" rx="10" fill="#fff"/>
-  <g clip-path="url(#lg-pt-clip)"><rect class="logo__fill" x="30" y="30" width="60" height="44" fill="url(#lg-pt-body)"/></g>
-  <path class="logo__pin" d="M60 41c-7.2 0-12.4 5.3-12.4 12.1 0 8.6 12.4 19.4 12.4 19.4s12.4-10.8 12.4-19.4C72.4 46.3 67.2 41 60 41z" fill="#fff"/>
-  <circle class="logo__dot" cx="60" cy="53" r="4.6" fill="#4FA6DC"/>
-  <path class="logo__swoosh" d="M24 70c-9 12 20 22 50 12 14-5 26-14 34-24-11 8-24 15-37 18-22 5-43 3-47-6z" fill="url(#lg-pt-sw)"/>
-  <path class="logo__plane" transform="translate(88 20) rotate(45 12 12)" d="M21 16v-2l-8-5V3.5a1.5 1.5 0 0 0-3 0V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5l8 2.5z" fill="#fff"/>
-</svg></span></div>
+  <div class="pt__panel pt__panel--2"><span class="logo"><img class="logo__mark logo__mark--img" src="assets/img/trackie-mark.png" alt="" width="152" height="140"></span></div>
 </div>
 
 </body>

@@ -33,10 +33,11 @@
     const ch = [(n >> 16) & 255, (n >> 8) & 255, n & 255].map((v) => { v /= 255; return v <= 0.03928 ? v / 12.92 : Math.pow((v + 0.055) / 1.055, 2.4); });
     return 0.2126 * ch[0] + 0.7152 * ch[1] + 0.0722 * ch[2];
   };
+  const paintCase = (svg, hex) => { if (!svg) return; svg.style.setProperty('--cover', hex); svg.classList.toggle('is-light', luminance(hex) > 0.3); };
   const esc = (s) => String(s).replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
 
   // Mini suitcase for cart line items
-  const miniCase = (hex) => `<svg class="case" viewBox="60 0 280 580" aria-hidden="true"><rect x="164" y="20" width="12" height="90" rx="3" fill="#1A1E26"/><rect x="224" y="20" width="12" height="90" rx="3" fill="#1A1E26"/><rect x="148" y="6" width="104" height="28" rx="13" fill="#0D1016"/><circle cx="120" cy="532" r="18" fill="#0A0C10"/><circle cx="280" cy="532" r="18" fill="#0A0C10"/><rect x="74" y="96" width="252" height="412" rx="44" fill="${hex}"/><rect x="74" y="96" width="252" height="412" rx="44" fill="url(#mcg)"/><defs><linearGradient id="mcg" x1="0" x2="1"><stop offset="0" stop-color="#fff" stop-opacity=".15"/><stop offset=".5" stop-color="#000" stop-opacity="0"/><stop offset="1" stop-color="#000" stop-opacity=".35"/></linearGradient></defs><rect x="108" y="256" width="176" height="200" rx="16" fill="#000" opacity=".18"/><rect x="262" y="148" width="48" height="60" rx="9" fill="#000" opacity=".3"/><circle cx="286" cy="178" r="7" fill="#3BA4FF"/></svg>`;
+  const miniCase = (hex) => `<svg class="case" viewBox="60 0 280 580" aria-hidden="true"><defs><linearGradient id="mcg" x1="0" x2="1"><stop offset="0" stop-color="#fff" stop-opacity=".15"/><stop offset=".5" stop-color="#000" stop-opacity="0"/><stop offset="1" stop-color="#000" stop-opacity=".35"/></linearGradient></defs><rect x="164" y="20" width="12" height="90" rx="3" fill="#1A1E26"/><rect x="224" y="20" width="12" height="90" rx="3" fill="#1A1E26"/><rect x="148" y="6" width="104" height="28" rx="13" fill="#0D1016"/><circle cx="120" cy="532" r="18" fill="#0A0C10"/><circle cx="280" cy="532" r="18" fill="#0A0C10"/><rect x="74" y="96" width="252" height="412" rx="44" fill="${hex}"/><rect x="74" y="96" width="252" height="412" rx="44" fill="url(#mcg)"/><rect x="150" y="98" width="100" height="18" rx="9" fill="#05070B"/><image href="assets/img/trackie-logo-${luminance(hex) > 0.3 ? 'dark' : 'light'}.png" x="206" y="124" width="104" height="84"/></svg>`;
 
   /* ---------------------------------------------------------
      CART
@@ -242,7 +243,7 @@
       const dot = $('.cursor__dot', c), ring = $('.cursor__ring', c);
       const xd = gsap.quickTo(dot, 'x', { duration: 0.08 }), yd = gsap.quickTo(dot, 'y', { duration: 0.08 });
       const xr = gsap.quickTo(ring, 'x', { duration: 0.45, ease: 'power3' }), yr = gsap.quickTo(ring, 'y', { duration: 0.45, ease: 'power3' });
-      window.addEventListener('pointermove', (e) => { xd(e.clientX); yd(e.clientY); xr(e.clientX); yr(e.clientY); }, { passive: true });
+      window.addEventListener('pointermove', (e) => { c.classList.add('is-on'); xd(e.clientX); yd(e.clientY); xr(e.clientX); yr(e.clientY); }, { passive: true });
       document.addEventListener('pointerover', (e) => c.classList.toggle('is-hover', !!e.target.closest('a, button, summary, [role="radio"], label, input, select')));
       $$('[data-magnetic]').forEach((el) => {
         const xt = gsap.quickTo(el, 'x', { duration: 0.6, ease: 'elastic.out(1, .4)' }), yt = gsap.quickTo(el, 'y', { duration: 0.6, ease: 'elastic.out(1, .4)' });
@@ -269,7 +270,7 @@
       const svg = $('.case', el);
       const q = (s) => $(s, svg);
       const shell = q('.case__shell'), cover = q('.case__cover'), handle = q('.case__handle'), wheels = $$('.case__wheel', svg);
-      const rings = $$('.case__ring', svg), glow = q('.case__tracker-glow'), orbit = q('.case__orbit-path'), plane = q('.case__plane');
+      const logoG = q('.case__logo'), orbit = q('.case__orbit-path'), plane = q('.case__plane');
       const chars = $$('.intro__char', el), reg = $('.intro__reg', el), tag = $('.intro__tag', el), count = $('[data-intro-count]', el), status = $('[data-intro-status]', el);
       const shadow = q('.case__shadow');
       const len = orbit.getTotalLength();
@@ -298,8 +299,7 @@
         .to(cover, { scaleY: 1, scaleX: 1, duration: 0.9, ease: 'elastic.out(1, .35)' }, '>')
         .set(shell, { opacity: 0 }, 1.6)
         .fromTo(svg, { rotate: 0 }, { rotate: -2.5, duration: 0.15, yoyo: true, repeat: 1, ease: 'sine.inOut', transformOrigin: '50% 100%' }, 1.57)
-        .fromTo(glow, { scale: 0.4, transformOrigin: '50% 50%' }, { scale: 1.6, duration: 0.5, yoyo: true, repeat: 1, ease: 'sine.inOut' }, 1.9)
-        .fromTo(rings, { scale: 1, opacity: 0.9, transformOrigin: '50% 50%' }, { scale: 3, opacity: 0, duration: 1, stagger: 0.3, ease: 'power2.out' }, 1.95)
+        .fromTo(logoG, { scale: 0.4, opacity: 0, transformOrigin: '50% 50%' }, { scale: 1, opacity: 1, duration: 0.9, ease: 'back.out(2)' }, 1.85)
         .to(orbit, { strokeDashoffset: 0, duration: 1.2, ease: 'power2.inOut' }, 2.15)
         .to(plane, { opacity: 1, duration: 0.2 }, 2.15)
         .to(plane, { duration: 1.2, ease: 'power2.inOut', motionPath: { path: orbit, align: orbit, alignOrigin: [0.5, 0.5], autoRotate: 90 } }, 2.15)
@@ -413,13 +413,13 @@
       const callout = $('[data-callout]', sec), ctext = $('[data-callout-txt]', sec), num = $('[data-anat-num]', sec), bar = $('[data-anat-bar]', sec);
       const q = (s) => $(s, svg);
       const parts = {
-        outline: q('.case__outline'), tag: q('.case__tag'), rings: $$('.case__ring', svg), zip: q('.case__zip'), open: q('.case__pocket-open'),
+        outline: q('.case__outline'), tag: q('.case__tag'), rings: $$('.case__ring', svg), zip: q('.case__zip'), tracker: q('.case__tracker'), side: q('.case__sidezip'), sideLine: q('.case__sidezip-line'),
         handle: q('.case__handle'), slot: q('.case__slot-glow'), cover: q('.case__cover'), glow: q('.case__tracker-glow'),
       };
       const SPOTS = {
         coverage: { x: 50, y: 6, t: 'Full coverage' },
-        tracker: { x: 80, y: 27, t: 'Hidden tracker pocket' },
-        pocket: { x: 26, y: 50, t: 'Zip side pocket' },
+        tracker: { x: 78, y: 57, t: 'Hidden tracker pocket' },
+        pocket: { x: 88, y: 36, t: 'Zip side pocket' },
         handle: { x: 50, y: 0, t: 'Handle access' },
         stretch: { x: 82, y: 78, t: 'Stretch fit' },
       };
@@ -430,7 +430,7 @@
         gsap.set(parts.outline, { opacity: 0, strokeDasharray: 'none' });
         gsap.set(parts.tag, { opacity: 0, y: 0 });
         gsap.set(parts.rings, { opacity: 0, scale: 1, transformOrigin: '50% 50%' });
-        gsap.set(parts.zip, { x: 0 }); gsap.set(parts.open, { attr: { height: 0 } });
+        gsap.set(parts.zip, { y: 0 }); gsap.set([parts.tracker, parts.side], { opacity: 0 });
         gsap.set(parts.handle, { y: 0 });
         gsap.set(parts.cover, { scaleX: 1, scaleY: 1, transformOrigin: '50% 100%' });
         gsap.set(svg, { scale: 1, x: 0, y: 0, transformOrigin: '50% 50%' });
@@ -445,14 +445,16 @@
           tl.fromTo(parts.outline, { opacity: 1, strokeDasharray: L, strokeDashoffset: L }, { strokeDashoffset: 0, duration: 1.4, ease: 'power2.inOut' })
             .fromTo(svg, { scale: 0.96 }, { scale: 1, duration: 1 }, 0);
         } else if (key === 'tracker') {
-          tl.to(svg, { scale: z(1.35), x: zp('-18%'), y: zp('22%'), duration: 1.1 })
-            .fromTo(parts.tag, { opacity: 0, y: -70 }, { opacity: 1, y: 0, duration: 0.8, ease: 'back.out(1.6)' }, 0.4)
-            .to(parts.tag, { opacity: 0, duration: 0.4 }, 1.6);
+          tl.to(svg, { scale: z(1.3), x: zp('-12%'), y: zp('-8%'), duration: 1.1 })
+            .to(parts.tracker, { opacity: 1, duration: 0.5 }, 0.3)
+            .fromTo(parts.tag, { opacity: 0, y: -70 }, { opacity: 1, y: 0, duration: 0.8, ease: 'back.out(1.6)' }, 0.5);
           loop = gsap.fromTo(parts.rings, { scale: 1, opacity: 0.9, transformOrigin: '50% 50%' }, { scale: 3, opacity: 0, duration: 1.4, stagger: 0.45, repeat: -1, ease: 'power2.out', delay: 1.1 });
         } else if (key === 'pocket') {
-          tl.to(svg, { scale: z(1.25), x: zp('6%'), y: zp('-4%'), duration: 1.1 })
-            .to(parts.zip, { x: 118, duration: 1, ease: 'power3.inOut' }, 0.4)
-            .to(parts.open, { attr: { height: 46 }, duration: 0.9, ease: 'power3.inOut' }, 0.5);
+          const SL = parts.sideLine.getTotalLength ? parts.sideLine.getTotalLength() : 230;
+          tl.to(svg, { scale: z(1.25), x: zp('-16%'), y: zp('2%'), duration: 1.1 })
+            .to(parts.side, { opacity: 1, duration: 0.3 }, 0.3)
+            .fromTo(parts.sideLine, { strokeDasharray: SL, strokeDashoffset: SL }, { strokeDashoffset: 0, duration: 1, ease: 'power3.inOut' }, 0.3)
+            .fromTo(parts.zip, { y: 0 }, { y: 180, duration: 1, ease: 'power3.inOut' }, 0.4);
         } else if (key === 'handle') {
           tl.to(svg, { scale: z(1.2), y: zp('16%'), duration: 1.1 })
             .to(parts.handle, { y: -46, duration: 1, ease: 'back.out(1.4)' }, 0.3);
@@ -545,7 +547,7 @@
         if (i === cur) return; const prev = cur; cur = i; const c = colors[i];
         sec.style.setProperty('--cw', c.hex);
         const light = luminance(c.hex) > 0.36; pin.style.setProperty('--cw-ink', light ? '#0A1324' : '#FFFFFF');
-        svg.style.setProperty('--cover', c.hex);
+        paintCase(svg, c.hex);
         $$('.cw-sw', sw).forEach((b, k) => b.setAttribute('aria-selected', String(k === i)));
         idx.textContent = String(i + 1).padStart(2, '0');
         shopName.textContent = c.name; shop.href = 'product.html?color=' + encodeURIComponent(c.name);
@@ -688,7 +690,7 @@
         $$('.size', sWrap).forEach((b) => b.setAttribute('aria-checked', String(b.dataset.size === state.size)));
         $$('[data-selected-color]', scope).forEach((e) => (e.textContent = state.color));
         $$('[data-selected-size]', scope).forEach((e) => { const s = sizes.find((x) => x.name === state.size); e.textContent = s ? `${s.name} · ${s.fits}` : ''; });
-        $$('[data-buy-case] .case, [data-pdp-case] .case', document).forEach((svg) => svg.style.setProperty('--cover', c.hex));
+        $$('[data-buy-case] .case, [data-pdp-case] .case', document).forEach((svg) => paintCase(svg, c.hex));
         $$('[data-buy-stage], .gallery__slide--svg', document).forEach((st) => st.style.setProperty('--sel', c.hex));
         priceEls.forEach((e) => (e.textContent = money(P.price)));
         cmpEls.forEach((e) => (e.textContent = P.comparePrice ? money(P.comparePrice) : ''));

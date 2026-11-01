@@ -700,3 +700,14 @@ html:not(.js) .intro, .no-intro .intro { display: none; }
 .gallery__thumbs::-webkit-scrollbar { display: none; }
 .gallery__thumb { flex: none; }
 .line-item .qty { width: max-content; }
+/* suitcase logo: light logo on dark covers, dark logo on light covers */
+.case__logo-img { transition: opacity .6s var(--ease); }
+.case__logo--dark { opacity: 0; }
+.case.is-light .case__logo--dark { opacity: 1; }
+.case.is-light .case__logo--light { opacity: 0; }
+
+.logo__mark--img { width: auto; height: 42px; object-fit: contain; }
+.pt__panel--2 .logo__mark--img { width: auto; height: 90px; }
+@media (max-width: 480px) { .logo__mark--img { height: 36px; } }
+.has-cursor .cursor { opacity: 0; transition: opacity .3s; }
+.has-cursor .cursor.is-on { opacity: 1; }
